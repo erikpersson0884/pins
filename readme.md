@@ -1,5 +1,5 @@
-# README.md TEMPLATE
-## A template for what erikpersson0884/pins repos README.md file should look like
+# Pins
+## A website for generating pin templates for the equality commmite EqaulIT
 
 ![Github version](https://img.shields.io/badge/version-0.0.0-darkblue?style=flat-square)
 ![GitHub repo size](https://img.shields.io/github/repo-size/erikpersson0884/pins?color=blue&style=flat-square)
