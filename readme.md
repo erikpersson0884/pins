@@ -1,4 +1,3 @@
-
 # README.md TEMPLATE
 ## A template for what erikpersson0884/pins repos README.md file should look like
 
