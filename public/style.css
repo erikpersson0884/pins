@@ -1,0 +1,84 @@
+body {
+    background: #2d2d2d;
+    color: #fff;
+    font-family: 'Arial', sans-serif;
+}
+
+#inputDiv {
+    height: 10rem;
+    width: 20rem;
+    margin-top: 20vh;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 2px solid #fff;
+    padding: 10px;
+    background-color: #393939;
+    border-radius: 10px;
+}
+
+#inputDiv button,
+#inputDiv input {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+}
+
+#inputDiv button {
+    background-color: #ca1616;
+    border-radius: 5px;
+}
+
+#inputDiv button:hover {
+    background-color: #a31313;
+}
+
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: left;
+    margin-top: 20px;
+}
+
+.populateButton {
+    margin-top: 10px;
+    background-color: #ca1616;
+    padding: 10px;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.populateButton:hover {
+    background-color: #a31313;
+}
+
+.imgRow {
+    width: min-content;
+    height: min-content;
+    display: block;
+}
+
+.pinImage {
+    width: 33mm;
+    padding: 6mm;
+    border: .6mm solid #ca1616;
+    border-radius: 50%;
+}
+
+.hidden {
+    display: none;
+}
+
+@media print {
+    #inputDiv {
+        display: none;
+    }
+}
