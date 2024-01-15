@@ -1,13 +1,13 @@
 
 
 var createButton = document.getElementById("createButton")
-var imageInput = document.getElementById('imageInput');
+var selectImageInput = document.getElementById('selectImageInput');
 var imageContainer = document.getElementById('imageContainer');
 var previewImage = document.getElementById('previewImage');
 
 function setImagePreview() {
-    if (imageInput.files.length > 0) {
-        var imageUrl = URL.createObjectURL(imageInput.files[0]);
+    if (selectImageInput.files.length > 0) {
+        var imageUrl = URL.createObjectURL(selectImageInput.files[0]);
         previewImage.src = imageUrl;
 
         // previewImage.style.border = "1px solid #ddd";
@@ -22,8 +22,8 @@ function createImageGrid() {
 
 
     // Ensure an image is selected
-    if (imageInput.files.length > 0) {
-        var imageUrl = URL.createObjectURL(imageInput.files[0]);
+    if (selectImageInput.files.length > 0) {
+        var imageUrl = URL.createObjectURL(selectImageInput.files[0]);
 
         // Create the grid of images
         for (var row = 0; row < 6; row++) {
@@ -46,7 +46,7 @@ function createImageGrid() {
 }
 
 
-imageInput.addEventListener("change", setImagePreview);
+selectImageInput.addEventListener("change", setImagePreview);
 
 createButton.addEventListener("click", function(){
     window.print();
