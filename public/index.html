@@ -3,25 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Your Page Title</title>
+    <title>pinIT</title>
     <!-- <link rel="icon" href="favicon.ico" type="image/x-icon"> -->
+    
     <link rel="stylesheet" href="style.css">
 
     <script src="script.js" defer></script>
+    
 
 </head>
 <body>
     <div id="inputDiv">
-        <button class="no-print" onclick="window.print()">Printa sida</button>
+        <div id="previewImageContainer">
+            <img id="previewImage">
+        </div>
 
-        <input type="file" id="imageInput">
-        
-        <button id="populateButton" class="populateButton">Generera pinmall</button>
+        <div id="controlDiv">
+            <input type="file" id="imageInput">
+            <button class="noPrint" id="createButton">Generate Template</button>
+        </div>
     </div>
 
-    <div class="image-container" id="imageContainer">
-        <!-- Duplicated images will be added here -->
-    </div>
+    <div class="image-container" id="imageContainer"></div>
 
 </body>
 </html>

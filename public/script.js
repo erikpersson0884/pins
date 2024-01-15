@@ -1,11 +1,25 @@
-// Function to duplicate the image 6 times with 4 images in each row
-var inputDiv = document.getElementById("inputDiv");
-var populateButton = document.getElementById("populateButton")
 
 
-function duplicateImage() {
-    var imageInput = document.getElementById('imageInput');
-    var imageContainer = document.getElementById('imageContainer');
+var createButton = document.getElementById("createButton")
+var imageInput = document.getElementById('imageInput');
+var imageContainer = document.getElementById('imageContainer');
+var previewImage = document.getElementById('previewImage');
+
+function setImagePreview() {
+    if (imageInput.files.length > 0) {
+        var imageUrl = URL.createObjectURL(imageInput.files[0]);
+        previewImage.src = imageUrl;
+
+        // previewImage.style.border = "1px solid #ddd";
+
+        createImageGrid();
+    }
+}
+
+
+function createImageGrid() {
+    imageContainer.innerHTML = ""; // Clear the image container
+
 
     // Ensure an image is selected
     if (imageInput.files.length > 0) {
@@ -32,6 +46,9 @@ function duplicateImage() {
 }
 
 
+imageInput.addEventListener("change", setImagePreview);
 
-populateButton.addEventListener("click", duplicateImage);
+createButton.addEventListener("click", function(){
+    window.print();
+});
 
