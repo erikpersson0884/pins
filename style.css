@@ -1,0 +1,103 @@
+@media only screen {
+    body {
+        background-color: #4a4a4a;
+        color: #fff;
+
+        font-family: 'Arial', sans-serif;
+        font-size: 18px;
+
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+    }
+
+    #inputDiv {
+        background-color: #3d3c3c;
+
+        width: 25rem;
+        border: 1px solid #ddd;
+        margin-inline: auto;
+        margin-top: 10rem;
+    }
+
+    #previewImageContainer {
+        text-align: center; 
+        height: 19rem;
+        padding: 1rem;
+    }
+    
+    #previewImage {
+        max-width: 100%;
+        max-height: 300px;
+        border-radius: 100%;
+        /* margin-bottom: 10px; */
+        
+    }
+    
+    #controlDiv {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #selectImageInput {
+        height: 2rem;
+        padding: 10px;
+        border: 1px solid #ddd;
+        cursor: pointer;        
+    }
+    
+    #createButton {
+        padding: 10px;
+        background-color: #3498db;
+        color: #fff;
+        border: 1px solid #ddd;
+        cursor: pointer;
+    }
+
+    #imageContainer {
+        display: none;
+    }
+}
+
+
+/* STYLE FOR THE PIN GRID */
+
+@media print {
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #inputDiv {
+        display: none;
+    }
+
+    #imageContainer {
+        display: block;
+    }
+
+    .image-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: left;
+        margin-top: 20px;
+    }
+    
+    .imgRow {
+        width: min-content;
+        height: min-content;
+        display: block;
+    }
+    
+    .pinImage {
+        border: .5mm solid #ca1616;
+
+        width: 32mm;
+        padding: 5.5mm;
+        border-radius: 50%;
+        margin: 1.5mm;
+    }
+}
