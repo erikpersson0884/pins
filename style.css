@@ -93,7 +93,8 @@
     }
     
     .pinImage {
-        border: .5mm solid #ca1616;
+        /* border: .5mm solid #ca1616; */
+        border: .5mm solid #000;
 
         width: 32mm;
         padding: 5.5mm;
