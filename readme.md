@@ -1,7 +1,7 @@
 # Pins
 ## A website for generating pin templates for the equality commmite EqaulIT
 
-![Github version](https://img.shields.io/badge/version-0.0.0-darkblue?style=flat-square)
+![Github version](https://img.shields.io/badge/version-0.1.0-darkblue?style=flat-square)
 ![GitHub repo size](https://img.shields.io/github/repo-size/erikpersson0884/pins?color=blue&style=flat-square)
 ![GitHub last commit](https://img.shields.io/github/last-commit/erikpersson0884/pins?color=darkgreen&style=flat-square)
 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/">
