@@ -1,9 +1,28 @@
-
+var userLanguage = navigator.language || navigator.userLanguage;
 
 var createButton = document.getElementById("createButton")
 var selectImageInput = document.getElementById('selectImageInput');
 var imageContainer = document.getElementById('imageContainer');
 var previewImage = document.getElementById('previewImage');
+
+function setPageLanguage() {
+    // if (userLanguage == "")
+            // Log browser language preference
+            console.log('Browser Language:', navigator.language || navigator.userLanguage);
+
+            // Log user agent information
+            console.log('User Agent:', navigator.userAgent);
+
+            // Log operating system language preference
+            console.log('OS Language:', navigator.languages);
+
+            // Log input element's language attribute
+            var inputElement = document.getElementById('selectImageInput');
+            console.log('Input Element Language:', inputElement.getAttribute('lang'));
+
+            // Log document language
+            console.log('Document Language:', document.documentElement.lang);
+}
 
 function setImagePreview() {
     if (selectImageInput.files.length > 0) {
@@ -15,7 +34,6 @@ function setImagePreview() {
         createImageGrid();
     }
 }
-
 
 
 
@@ -47,6 +65,7 @@ function createImageGrid() {
     }
 }
 
+setPageLanguage();
 
 selectImageInput.addEventListener("change", setImagePreview);
 
