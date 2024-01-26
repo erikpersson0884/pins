@@ -1,4 +1,5 @@
 # Pins
+
 ## A website for generating pin templates for the equality commmite EqaulIT
 
 ![Github version](https://img.shields.io/badge/version-0.1.0-darkblue?style=flat-square)
@@ -9,4 +10,5 @@
 </a>
 
 ### License:
+
 **Attribution-NonCommercial-ShareAlike 4.0 International (CC BY-NC-SA 4.0)**
