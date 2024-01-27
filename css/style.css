@@ -44,18 +44,27 @@ body {
     }
     
     #selectImageInput {
+        flex: 5; /* Take up all available space */
+
         height: 2rem;
         padding: 10px;
         border: 1px solid #ddd;
         cursor: pointer;        
     }
+
+    #selectedFile  {
+        background: blue !important;
+    }
     
     #createButton {
+        flex: 2; /* Take up all available space */
+
         padding: 10px;
         background-color: #3498db;
         color: #fff;
         border: 1px solid #ddd;
         cursor: pointer;
+        height: 100%;
     }
 
     #imageContainer {
