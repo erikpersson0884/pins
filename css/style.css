@@ -70,13 +70,36 @@ body {
     #imageContainer {
         display: none;
     }
+
+    footer {
+        /* background-color: purple; */
+        font-size: 1rem;
+        text-align: center;
+        font-family: copperplate, sans-serif;
+
+        position: absolute;
+        bottom: 0;
+
+        width: 100vw;
+        height: 3rem;
+
+    }
+    footer img {
+        height: 1rem;
+        width: 2rem;
+        vertical-align: middle;
+    }
+    footer a {
+        color: aqua;
+        text-decoration: none;
+    }
 }
 
 
 /* STYLE FOR THE PIN GRID */
 
 @media print {
-    #inputDiv {
+    #inputDiv, footer {
         display: none;
     }
 
