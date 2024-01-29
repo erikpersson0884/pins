@@ -21,12 +21,19 @@
         </div>
 
         <div id="controlDiv">
-            <input type="file" lang="en" id="selectImageInput" title="Choose File">
-            <button class="noPrint" id="createButton">Generate Template</button>
+            <div class="selectImageContainer">
+                <input type="file" id="fileInput" class="hidden" />
+
+                <img id="uploadImageButton" src="images/upload.svg" height="4">
+                <span id="fileName" class="file-name">No file chosen</span>
+            </div>
+
+            <!-- <input type="file" lang="en" id="selectImageInput" title="Choose File"> -->
+            <button class="noPrint" id="generateTemplateButton">Generate Template</button>
         </div>
     </div>
 
-    <footer>            
+    <footer class="hidden">            
         Made as a gift from 
         <a href="https://wiki.chalmers.it/index.php/G%C3%B6ken">
             <!-- <img src="images/goken-pa-market.png" alt="Gökens mark" height="10"> -->

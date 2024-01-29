@@ -4,7 +4,16 @@ body {
     align-items: center;
 }
 
+.hidden {
+    display: none;
+}
+
 @media only screen {
+    #imageContainer {
+        display: none;
+    }
+
+
     body {
         background-color: #4a4a4a;
         color: #fff;
@@ -25,51 +34,58 @@ body {
         margin-inline: auto;
     }
 
-    #previewImageContainer {
-        text-align: center; 
-        height: 19rem;
-        padding: 1rem;
-    }
-    
-    #previewImage {
-        max-width: 100%;
-        max-height: 300px;
-        border-radius: 100%;
-    }
-    
-    #controlDiv {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    
-    #selectImageInput {
-        flex: 5; /* Take up all available space */
+        #previewImageContainer {
+            text-align: center; 
+            height: 19rem;
+            padding: 1rem;
+        }
+        
+        #previewImage {
+            max-width: 100%;
+            max-height: 300px;
+            border-radius: 100%;
+        }
+        
+        #controlDiv {
+            display: flex;
+            justify-content: center;
+            align-items: center;
 
-        height: 2rem;
-        padding: 10px;
-        border: 1px solid #ddd;
-        cursor: pointer;        
-    }
+            height: 3rem;
+        }
 
-    #selectedFile  {
-        background: blue !important;
-    }
+            .selectImageContainer {
+                height: 100%;
+                padding: 0 !important;
+
+                flex: 5;
+                padding: 10px;
+                border: 1px solid #ddd;
+                cursor: pointer;     
+                display: flex;
+                align-items: center;   
+            }
+
+            #uploadImageButton {
+                background: #585858;
+                height: 100%;
+                margin-right: .7rem;
+                transition: all .1s ease-in-out;
+            }
+            #uploadImageButton:hover {
+                background: #606060;
+                transition: all .1s ease-in-out;
+            }
     
-    #createButton {
-        flex: 2; /* Take up all available space */
+            #generateTemplateButton {
+                flex: 2; /* Take up all available space */
 
-        padding: 10px;
-        background-color: #3498db;
-        color: #fff;
-        border: 1px solid #ddd;
-        cursor: pointer;
-        height: 100%;
-    }
-
-    #imageContainer {
-        display: none;
-    }
+                padding: 10px;
+                background-color: #3498db;
+                color: #fff;
+                border: 1px solid #ddd;
+                cursor: pointer;
+            }
 
     footer {
         /* background-color: purple; */
@@ -84,11 +100,13 @@ body {
         height: 3rem;
 
     }
+
     footer img {
         height: 1rem;
         width: 2rem;
         vertical-align: middle;
     }
+
     footer a {
         color: aqua;
         text-decoration: none;
