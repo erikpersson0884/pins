@@ -59,9 +59,6 @@ function setImagePreview() {
         var imageUrl = URL.createObjectURL(selectImageInput.files[0]);
         previewImage.src = imageUrl;
         createImageGrid(); // has to be here. if placed before print, the grid will not load in time for print
-
-        // previewImage.style.border = "1px solid #ddd";
-
     }
 }
 
@@ -113,7 +110,7 @@ selectImageInput.addEventListener("change", uploadedImageChanged);
 
 
 generateTemplateButton.addEventListener("click", function(){
-    if (true){
+    if (imageIsUploaded()){
         window.print();
     } else {
         alert("Please upload an image first.");}
