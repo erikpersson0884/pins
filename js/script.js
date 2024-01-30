@@ -106,6 +106,10 @@ selectImageButton.addEventListener("click", function () {
     selectImageInput.click();
 });
 
+previewImage.addEventListener("click", function () {
+    selectImageInput.click();
+});
+
 selectImageInput.addEventListener("change", uploadedImageChanged);
 
 

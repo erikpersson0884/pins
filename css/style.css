@@ -94,7 +94,6 @@ body {
             .selectImageContainer {
                 flex: 5;
 
-                cursor: pointer;     
                 display: flex;
                 align-items: center;   
 
@@ -106,13 +105,21 @@ body {
 
                 #selectImageButton {
                     background: #585858;
+
+                    cursor: pointer;     
+
                     height: 100%;
                     margin-right: .7rem;
-                    transition: all .1s ease-in-out;
+
+                    transition: all .3s ease-in-out;
                 }
                 #selectImageButton:hover {
                     background: #606060;
                     transition: all .1s ease-in-out;
+                }
+
+                .fileName {
+                    cursor: default; 
                 }
     
             #generateTemplateButton {
@@ -140,8 +147,6 @@ body {
             #generateTemplateButton:active {
                 background-color: rgb(61, 50, 222);
                 transition: all .1s ease-in-out;
-                transform: scale(0.95);
-
             }
 
     
