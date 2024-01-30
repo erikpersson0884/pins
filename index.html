@@ -16,20 +16,24 @@
 </head>
 <body>
     <div id="inputDiv">
+        <div id="imageNotSquareWarning" class="hidden">
+            <img id="logo" src="images/warning.svg" alt="EqualIT logo" height="30">
+            <p>Image is not square</p>
+        </div>
+
         <div id="previewImageContainer">
             <img id="previewImage">
         </div>
 
         <div id="controlDiv">
             <div class="selectImageContainer">
-                <input type="file" id="fileInput" class="hidden" />
+                <input id="selectImageInput" type="file" class="hidden" />
 
-                <img id="uploadImageButton" src="images/upload.svg" height="4">
+                <img id="selectImageButton" src="images/upload-white.svg" height="4">
                 <span id="fileName" class="file-name">No file chosen</span>
             </div>
 
-            <!-- <input type="file" lang="en" id="selectImageInput" title="Choose File"> -->
-            <button class="noPrint" id="generateTemplateButton">Generate Template</button>
+            <button id="generateTemplateButton" class="noPrint">Generate Template</button>
         </div>
     </div>
 

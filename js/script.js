@@ -1,37 +1,67 @@
 var userLanguage = navigator.language || navigator.userLanguage;
 
-var createButton = document.getElementById("createButton")
+var generateTemplateButton = document.getElementById("generateTemplateButton")
 var selectImageInput = document.getElementById('selectImageInput');
 var imageContainer = document.getElementById('imageContainer');
 var previewImage = document.getElementById('previewImage');
+var imageNotSquareWarningDialog = document.getElementById('imageNotSquareWarning');
+var selectImageButton = document.getElementById('selectImageButton');
+var fileName = document.getElementById('fileName');
 
-function setPageLanguage() {
-    // if (userLanguage == "")
-            // Log browser language preference
-            console.log('Browser Language:', navigator.language || navigator.userLanguage);
 
-            // Log user agent information
-            console.log('User Agent:', navigator.userAgent);
+function uploadedImageChanged() {
+    if (!imageIsSquare()) {
+        warnImageIsNotSquare();
+    }
+    changeFileName();
+    setImagePreview();
+};
 
-            // Log operating system language preference
-            console.log('OS Language:', navigator.languages);
+function changeFileName() {
+    var fileName = selectImageInput.files[0].name;
+    document.getElementById('fileName').innerHTML = fileName;
+};
 
-            // Log input element's language attribute
-            var inputElement = document.getElementById('selectImageInput');
-            console.log('Input Element Language:', inputElement.getAttribute('lang'));
+function warnImageIsNotSquare() {
+    imageNotSquareWarningDialog.classList.remove('hidden');
 
-            // Log document language
-            console.log('Document Language:', document.documentElement.lang);
+    setTimeout(function() {
+        imageNotSquareWarningDialog.classList.add('hidden');
+    }, 2000);
+};
+
+
+
+function imageIsSquare() {
+    if (selectImageInput.files.length > 0) {
+        var image = new Image();
+        image.src = URL.createObjectURL(selectImageInput.files[0]);
+
+        image.onload = function() {
+            var width = this.width;
+            var height = this.height;
+
+            if (width === height) {
+                console.log("true");
+
+                return true;
+            } else {
+                console.log("false");
+
+                return false;
+            }
+        };
+    }
 }
 
 function setImagePreview() {
     if (selectImageInput.files.length > 0) {
         var imageUrl = URL.createObjectURL(selectImageInput.files[0]);
         previewImage.src = imageUrl;
+        createImageGrid(); // has to be here. if placed before print, the grid will not load in time for print
 
         // previewImage.style.border = "1px solid #ddd";
 
-        createImageGrid();
     }
 }
 
@@ -42,7 +72,7 @@ function createImageGrid() {
 
 
     // Ensure an image is selected
-    if (selectImageInput.files.length > 0) {
+    if (imageIsUploaded()) {
         var imageUrl = URL.createObjectURL(selectImageInput.files[0]);
 
         // Create the grid of images
@@ -56,20 +86,37 @@ function createImageGrid() {
                 imgElement.alt = 'Duplicated Image';
                 imgElement.classList.add('pinImage');
                 imgRow.appendChild(imgElement);
+                console.log("Image added");
             }
             imageContainer.appendChild(imgRow);
-        }
+        };
 
+    };
+};
+
+function imageIsUploaded(){
+    if (selectImageInput.files.length > 0) {
+        return true;
     } else {
-        alert('Please select an image first.');
+        return false;
     }
 }
 
-setPageLanguage();
 
-selectImageInput.addEventListener("change", setImagePreview);
 
-createButton.addEventListener("click", function(){
-    window.print();
+
+selectImageButton.addEventListener("click", function () {
+    selectImageInput.click();
 });
+
+selectImageInput.addEventListener("change", uploadedImageChanged);
+
+
+generateTemplateButton.addEventListener("click", function(){
+    if (true){
+        window.print();
+    } else {
+        alert("Please upload an image first.");}
+});
+
 

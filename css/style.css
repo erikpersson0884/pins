@@ -1,7 +1,15 @@
+:root {
+    --border-width: 1px;
+    --pinImage-size: 32mm;
+}
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
+
+    font-family: 'Arial', sans-serif;
+    font-size: 18px;
 }
 
 .hidden {
@@ -18,9 +26,6 @@ body {
         background-color: #4a4a4a;
         color: #fff;
 
-        font-family: 'Arial', sans-serif;
-        font-size: 18px;
-
         height: 100vh;
         padding: 0;
         margin: 0;
@@ -28,10 +33,39 @@ body {
 
     #inputDiv {
         background-color: #3d3c3c;
+        position: relative;
 
         width: 25rem;
-        border: 1px solid #ddd;
+        min-width: max-content;
+        border: var(--border-width) solid #ddd;
         margin-inline: auto;
+    }
+
+    #imageNotSquareWarning {
+        background-color: rgb(137, 10, 10);
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+
+        position: absolute;
+        top: 0;
+        right: 0;
+
+        padding: .5rem;
+
+        opacity: 1;
+        transition: opacity .1s ease-in-out; /* Adjust the duration and easing as needed */
+    }
+      
+    #imageNotSquareWarning.hidden {
+    opacity: 0;
+    pointer-events: none; /* Optionally disable pointer events when hidden */
+    } 
+
+    #imageNotSquareWarning p {
+        margin: 0;
+        margin-right: .4rem;
     }
 
         #previewImageContainer {
@@ -40,11 +74,11 @@ body {
             padding: 1rem;
         }
         
-        #previewImage {
-            max-width: 100%;
-            max-height: 300px;
-            border-radius: 100%;
-        }
+            #previewImage {
+                max-width: 100%;
+                max-height: 300px;
+                border-radius: 100%;
+            }
         
         #controlDiv {
             display: flex;
@@ -55,37 +89,44 @@ body {
         }
 
             .selectImageContainer {
-                height: 100%;
-                padding: 0 !important;
-
                 flex: 5;
-                padding: 10px;
-                border: 1px solid #ddd;
+
                 cursor: pointer;     
                 display: flex;
                 align-items: center;   
+
+                height: 100%;
+                padding: 20;
+                border: 0;
+                outline: var(--border-width) solid #ddd;
             }
 
-            #uploadImageButton {
-                background: #585858;
-                height: 100%;
-                margin-right: .7rem;
-                transition: all .1s ease-in-out;
-            }
-            #uploadImageButton:hover {
-                background: #606060;
-                transition: all .1s ease-in-out;
-            }
+                #selectImageButton {
+                    background: #585858;
+                    height: 100%;
+                    margin-right: .7rem;
+                    /* transition: all .1s ease-in-out; */
+                }
+                #selectImageButton:hover {
+                    background: #606060;
+                    /* transition: all .1s ease-in-out; */
+                }
     
             #generateTemplateButton {
-                flex: 2; /* Take up all available space */
+                flex: 2;
 
-                padding: 10px;
                 background-color: #3498db;
                 color: #fff;
-                border: 1px solid #ddd;
                 cursor: pointer;
+
+                height: 100%;
+                padding: 10px;
+                border: 0;
+                outline: var(--border-width) solid #ddd;
+
             }
+
+    
 
     footer {
         /* background-color: purple; */
@@ -121,10 +162,6 @@ body {
         display: none;
     }
 
-    #imageContainer {
-        display: block;
-    }
-
     .image-container {
         display: flex;
         flex-direction: column;
@@ -143,7 +180,8 @@ body {
         /* border: .5mm solid #ca1616; */
         border: .5mm solid #000;
 
-        width: 32mm;
+        width: var(--pinImage-size);
+        height: var(--pinImage-size);
         padding: 5.5mm;
         border-radius: 50%;
         margin: 1.5mm;
