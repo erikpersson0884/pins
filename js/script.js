@@ -1,4 +1,3 @@
-var userLanguage = navigator.language || navigator.userLanguage;
 
 var generateTemplateButton = document.getElementById("generateTemplateButton")
 var selectImageInput = document.getElementById('selectImageInput');
@@ -7,60 +6,9 @@ var previewImage = document.getElementById('previewImage');
 var imageNotSquareWarningDialog = document.getElementById('imageNotSquareWarning');
 var selectImageButton = document.getElementById('selectImageButton');
 var fileName = document.getElementById('fileName');
+var uglyDuckling = document.getElementById('uglyDuckling');
 
-
-function uploadedImageChanged() {
-    if (!imageIsSquare()) {
-        warnImageIsNotSquare();
-    }
-    changeFileName();
-    setImagePreview();
-};
-
-function changeFileName() {
-    var fileName = selectImageInput.files[0].name;
-    document.getElementById('fileName').innerHTML = fileName;
-};
-
-function warnImageIsNotSquare() {
-    imageNotSquareWarningDialog.classList.remove('hidden');
-
-    setTimeout(function() {
-        imageNotSquareWarningDialog.classList.add('hidden');
-    }, 2000);
-};
-
-
-
-function imageIsSquare() {
-    if (selectImageInput.files.length > 0) {
-        var image = new Image();
-        image.src = URL.createObjectURL(selectImageInput.files[0]);
-
-        image.onload = function() {
-            var width = this.width;
-            var height = this.height;
-
-            if (width === height) {
-                console.log("true");
-
-                return true;
-            } else {
-                console.log("false");
-
-                return false;
-            }
-        };
-    }
-}
-
-function setImagePreview() {
-    if (selectImageInput.files.length > 0) {
-        var imageUrl = URL.createObjectURL(selectImageInput.files[0]);
-        previewImage.src = imageUrl;
-        createImageGrid(); // has to be here. if placed before print, the grid will not load in time for print
-    }
-}
+const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 
 
@@ -83,7 +31,6 @@ function createImageGrid() {
                 imgElement.alt = 'Duplicated Image';
                 imgElement.classList.add('pinImage');
                 imgRow.appendChild(imgElement);
-                console.log("Image added");
             }
             imageContainer.appendChild(imgRow);
         };
@@ -91,14 +38,73 @@ function createImageGrid() {
     };
 };
 
-function imageIsUploaded(){
-    if (selectImageInput.files.length > 0) {
+function uploadedImageChanged() {
+    changeFileName();
+    setImagePreview();
+
+    setTimeout(warnImageIsNotSquare, 100);
+};
+
+function changeFileName() {
+    var fileName = selectImageInput.files[0].name;
+    document.getElementById('fileName').innerHTML = fileName;
+};
+
+function warnImageIsNotSquare() {
+    if (imageIsSquare()) {
+        console.log("image is square");
+        disableWarning();
+    } else{
+        console.log("image is not square");
+        showWarning("Image is not square");
+    }
+};
+
+function showWarning(message){
+    imageNotSquareWarningDialog.querySelector('p').innerHTML = message;
+    imageNotSquareWarningDialog.classList.remove('hidden');
+
+}
+
+function disableWarning() {
+    imageNotSquareWarningDialog.classList.add('hidden');
+}
+
+
+function imageIsSquare() {
+    var image = previewImage;
+    console.log(image.naturalWidth + " " + image.naturalHeight);
+
+    if (image.naturalWidth === image.naturalHeight) {
+        console.log("true");
         return true;
-    } else {
-        return false;
+    }
+    return false;
+}
+
+function setImagePreview() {
+    if (selectImageInput.files.length > 0) {
+        var imageUrl = URL.createObjectURL(selectImageInput.files[0]);
+        previewImage.src = imageUrl
+
+        createImageGrid(); // has to be here. if placed before print, the grid will not load in time for print
     }
 }
 
+
+
+
+function imageIsUploaded(){
+    if (selectImageInput.files.length > 0) {
+        return true;
+    } 
+    console.log("FILE NOT UPLOADED");
+    return false;
+}
+
+function checkIfSquare(width, height) {
+    return width === height;
+}
 
 
 

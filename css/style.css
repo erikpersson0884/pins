@@ -36,7 +36,6 @@ body {
         position: relative;
 
         width: 25rem;
-        min-width: max-content;
         border: var(--border-width) solid #ddd;
         margin-inline: auto;
     }
@@ -89,6 +88,7 @@ body {
             align-items: center;
 
             height: 3rem;
+
         }
 
             .selectImageContainer {
@@ -101,6 +101,7 @@ body {
                 padding: 20;
                 border: 0;
                 outline: var(--border-width) solid #ddd;
+                padding-right: 1rem;
             }
 
                 #selectImageButton {
@@ -113,9 +114,13 @@ body {
 
                     transition: all .3s ease-in-out;
                 }
+
                 #selectImageButton:hover {
-                    background: #606060;
-                    transition: all .1s ease-in-out;
+                    background-color: #2f83bc;
+                    border-radius: 100%;
+
+                    transition: all .3s ease-in-out;
+                    transform: rotate(360deg); 
                 }
 
                 .fileName {
@@ -135,13 +140,6 @@ body {
                 outline: var(--border-width) solid #ddd;
 
                 transition: all .1s ease-in-out;
-            }
-
-            #selectImageButton:hover {
-                background-color: #2f83bc;
-                transition: all .3s ease-in-out;
-                transform:rotate(360deg);
-                transform: scale(2), rotate(360deg);
             }
 
             #generateTemplateButton:active {
