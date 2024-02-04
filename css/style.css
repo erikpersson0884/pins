@@ -135,6 +135,7 @@ body {
                 cursor: pointer;
 
                 height: 100%;
+                /* min-width: 7rem; */
                 padding: 10px;
                 border: 0;
                 outline: var(--border-width) solid #ddd;

@@ -106,8 +106,6 @@ function checkIfSquare(width, height) {
     return width === height;
 }
 
-
-
 selectImageButton.addEventListener("click", function () {
     selectImageInput.click();
 });
