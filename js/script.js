@@ -41,6 +41,7 @@ function createImageGrid() {
 function uploadedImageChanged() {
     changeFileName();
     setImagePreview();
+    setImageBackground(); // Call the function to set the background color
 
     setTimeout(warnImageIsNotSquare, 100);
 };
@@ -88,6 +89,26 @@ function setImagePreview() {
         previewImage.src = imageUrl
 
         createImageGrid(); // has to be here. if placed before print, the grid will not load in time for print
+    }
+}
+
+function setImageBackground() {
+    // Ensure an image is uploaded
+    if (imageIsUploaded()) {
+        var imageUrl = URL.createObjectURL(selectImageInput.files[0]);
+        var img = new Image();
+        img.onload = function() {
+            var canvas = document.createElement('canvas');
+            canvas.width = img.width;
+            canvas.height = img.height;
+            var ctx = canvas.getContext('2d');
+            ctx.drawImage(img, 0, 0);
+            var pixelData = ctx.getImageData(canvas.width - 1, 0, 1, 1).data;
+            var color = `rgb(${pixelData[0]}, ${pixelData[1]}, ${pixelData[2]})`;
+            
+            document.body.style.setProperty('--background-color-print', color);
+        };
+        img.src = imageUrl;
     }
 }
 

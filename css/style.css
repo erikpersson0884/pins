@@ -1,6 +1,8 @@
 :root {
     --border-width: 1px;
     --pinImage-size: 32mm;
+    --background-color-print: blue; /* Default background color for printing */
+
 }
 
 body {
@@ -180,6 +182,10 @@ body {
 /* STYLE FOR THE PIN GRID */
 
 @media print {
+    body {
+        background-color: var(--background-color-print); /* Use the CSS variable for printing */
+    }
+
     #inputDiv, footer {
         display: none;
     }
@@ -190,6 +196,7 @@ body {
         justify-content: space-between;
         align-items: left;
         margin-top: 20px;
+
     }
     
     .imgRow {
