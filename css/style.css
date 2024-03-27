@@ -247,7 +247,7 @@ body {
 
     footer img {
         height: 1rem;
-        width: 2rem;
+        width: auto;
         vertical-align: middle;
     }
 
