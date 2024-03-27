@@ -15,10 +15,82 @@ body {
 }
 
 .hidden {
-    display: none;
+    display: none !important;
+}
+
+.shadowbox {
+    background: #00000078;
+    /* background: green; */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    z-index: 1000;
 }
 
 @media only screen {
+    .showHowToButton {
+        background: #292929;
+
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+
+        width: 3rem;
+        height: 3rem;
+        outline: .1rem solid #09cdda;
+        border-radius: 100%;
+
+        transition: all .3s ease-in-out;
+    }
+
+    .showHowToButton:hover {
+        background: #4a4a4a;
+                
+        transition: all .3s ease-in-out;
+        transform: scale(1.1);
+    }
+
+    .howTo {
+        background: #292929;
+
+        display: flex;
+        flex-direction: column;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        max-width: 28rem;
+        padding: 1rem;
+        outline: .1rem solid #09cdda;
+        border-radius: .4rem;
+    }
+
+    .howTo h1 {
+        padding-left: 2.5rem;
+    }
+
+    .howTo ul li {
+        margin-bottom: .9rem;
+    }
+
+
     #imageContainer {
         display: none;
     }
@@ -79,6 +151,9 @@ body {
         
             #previewImage {
                 background: #4a4a4a;
+
+                cursor: pointer;
+
                 height: 17rem;
                 width: 17rem;
                 border-radius: 100%;
@@ -104,6 +179,10 @@ body {
                 border: 0;
                 outline: var(--border-width) solid #ddd;
                 padding-right: 1rem;
+            }
+
+            body .selectImageContainer * {
+                cursor: pointer;
             }
 
                 #selectImageButton {
@@ -186,7 +265,7 @@ body {
         background-color: var(--background-color-print); /* Use the CSS variable for printing */
     }
 
-    #inputDiv, footer {
+    #inputDiv, footer, .howToShadowbox, .showHowToButton {
         display: none;
     }
 
