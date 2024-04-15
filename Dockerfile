@@ -6,8 +6,10 @@ WORKDIR /usr/share/nginx/html/
 
 # Copy your HTML, CSS, and JS files to the Nginx default public directory
 COPY index.html .
-COPY css/style.css css/
-COPY js/script.js js/
+COPY css/ css/
+COPY js/ js/
+COPY images/ images/
+
 
 # Expose port 80 for web traffic
 EXPOSE 80
