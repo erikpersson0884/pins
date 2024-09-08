@@ -188,7 +188,7 @@
             margin: 0;
         }
 
-        .pinColor {
+        .pinColorInput {
             border: none !important;
             outline: none;
             z-index: -100;
