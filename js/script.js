@@ -24,14 +24,16 @@ if (localStorage.getItem("includePinPadding")) {
     createPaddingCheckbox.checked = localStorage.getItem("includePinPadding")
 }
 
+if (localStorage.getItem("includePinBackground") && localStorage.getItem("includePinBackground") === "true") {
+    IncludePinBackgroundCheckbox.checked = (localStorage.getItem("includePinBackground"));
+    setIncludePinBackground(true);
+}
+
 if (localStorage.getItem("pinBackground")) {
     setPrintBackgroundColor(localStorage.getItem("pinBackground"));
 }
 
-if (localStorage.getItem("includePinBackground") && localStorage.getItem("includePinBackground") === "true") {
-    IncludePinBackgroundCheckbox.checked = (localStorage.getItem("includePinBackground"));
-    pinColorPickerOption.classList.remove('disabled');
-}
+
 
 // Add event listeners 
 
@@ -148,6 +150,6 @@ function setIncludePinBackground(input){
 
 function setPrintBackgroundColor(color) {
     document.body.style.setProperty('--printBackgroundColor', color);
-    localStorage.setItem("pinBackground", color);
     pinColorText.innerHTML = color;
+    localStorage.setItem("pinBackground", color);
 }
