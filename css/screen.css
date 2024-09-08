@@ -1,0 +1,267 @@
+
+@media only screen {
+    .showHowToButton {
+        background: #292929;
+
+        cursor: pointer;
+
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+
+        width: 3rem;
+        height: 3rem;
+        outline: .1rem solid #09cdda;
+        border-radius: 100%;
+
+        transition: all .3s ease-in-out;
+    }
+
+    .showHowToButton:hover {
+        background: #4a4a4a;
+                
+        transition: all .3s ease-in-out;
+        transform: scale(1.1);
+    }
+
+    .howTo {
+        background: #292929;
+
+        display: flex;
+        flex-direction: column;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        max-width: 28rem;
+        padding: 1rem;
+        outline: .1rem solid #09cdda;
+        border-radius: .4rem;
+    }
+
+    .howTo h1 {
+        padding-left: 2.5rem;
+    }
+
+    .howTo ul li {
+        margin-bottom: .9rem;
+    }
+
+
+    #imageContainer {
+        display: none;
+    }
+
+
+    body {
+        background-color: #4a4a4a;
+        color: #fff;
+
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+    }
+
+    .mainContent {
+        background-color: #3d3c3c;
+        position: relative;
+
+        display: flex;
+        flex-direction: row;
+        /* gap: 1rem; */
+
+        width: max-content;
+        margin-inline: auto;
+    }
+
+    .mainContent>div {
+        border: .1rem solid #ddd;
+        padding: 1rem;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 1rem;
+    }
+
+    .selectImageContainer {
+        flex: 5;
+
+        display: flex;
+        align-items: center;   
+
+        height: 100%;
+        padding: 20;
+        border: 0;
+        outline: var(--border-width) solid #ddd;
+        padding-right: 1rem;
+    }
+    
+        .previewImageContainer {
+            position: relative;
+            overflow: hidden;
+        }
+            
+            .previewImage {
+                background: #4a4a4a;
+
+                cursor: pointer;
+
+                height: 17rem;
+                width: 17rem;
+                border-radius: 100%;
+            }
+
+        .selectImageText {
+            font-size: 1.5rem;
+
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+
+            cursor: pointer;     
+        }
+
+        .selectImageText>img {
+            height: 2rem;
+
+            transition: all .3s ease-in-out;
+        }
+
+        .fileName {            
+            max-width: 15ch;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .selectImageText:hover >img {
+            background-color: #2f83bc;
+            border-radius: 100%;
+
+            transform: rotate(360deg); 
+        }
+
+
+
+    .option {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        text-wrap: nowrap;
+    }
+
+        .pinColorPicker {
+            background-color: var(--printBackgroundColor);
+            background-color: red;
+            display: flex;
+            flex-direction: row;
+
+            width: max-content;
+            padding: .15rem;
+        }
+
+        .pinColorText {
+            background: var(--printBackgroundColor);
+            cursor: pointer;
+
+            padding: .4rem;
+            border-radius: .4rem;
+            margin: 0;
+        }
+
+        .pinColorHex {
+            background: none;
+
+            width: 6ch;
+            border: none;
+            outline: none;
+            margin: 0;
+        }
+
+        .pinColor {
+            border: none !important;
+            outline: none;
+            z-index: -100;
+        }
+
+    
+    #generateTemplateButton {
+        background-color: #3498db;
+        color: #fff;
+
+        font-family: "Kode Mono";
+        font-size: 1.3rem;
+        font-weight: bold;
+        cursor: pointer;
+
+        padding: 10px;
+        border: .1rem solid #ddd;
+        margin-top: auto;
+
+        transition: all .1s ease-in-out;
+    }
+
+    #generateTemplateButton:active {
+        background-color: rgb(61, 50, 222);
+        transition: all .1s ease-in-out;
+    }
+
+    #imageNotSquareWarning {
+        background-color: rgb(137, 10, 10);
+
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: .5rem;
+
+        position: absolute;
+        top: -3rem;
+        right: 0;
+
+        box-sizing: border-box;
+        padding: .5rem;
+        width: 100%;
+
+        opacity: 1;
+        transition: top .5s ease-in-out;
+    }
+
+        #imageNotSquareWarning p {
+            margin: 0;
+        }
+    
+
+    footer {
+        font-size: 1rem;
+        text-align: center;
+        font-family: copperplate, sans-serif;
+
+        position: absolute;
+        bottom: 0;
+
+        width: 100vw;
+        height: 3rem;
+    }
+
+    footer img {
+        height: 1rem;
+        width: auto;
+        vertical-align: middle;
+    }
+
+    footer a {
+        color: aqua;
+        text-decoration: none;
+    }
+}

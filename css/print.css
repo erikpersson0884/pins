@@ -1,0 +1,40 @@
+
+.image-container, .imageRow {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--pinSpacing);
+}
+
+.imageRow {
+    flex-direction: row;
+}
+
+.pinImage {
+    width: var(--pinSize);
+    height: var(--pinSize);
+}
+
+.pinImageWithPadding {
+    width: var(--pinImageSize);
+    height: var(--pinImageSize);
+    padding: 5.5mm;
+    border: .5mm solid #000;
+    border-radius: var(--pinImageSize);
+}
+
+.pinImageWithBackground {
+    background-color: var(--printBackgroundColor);
+}
+
+
+@media print {
+    body {
+        background-color: var(--printBackgroundColor);
+    }
+
+    .mainContent, footer, #howTo, #showHowToButton {
+        display: none;
+    }
+}

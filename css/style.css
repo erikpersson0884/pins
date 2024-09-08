@@ -1,7 +1,13 @@
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Kode+Mono:wght@400..700&display=swap');
+
+
+
 :root {
-    --border-width: 1px;
-    --pinImage-size: 32mm;
-    --background-color-print: blue; /* Default background color for printing */
+    --pinSize: 46mm; /* There entire diameter of the pin. Including the image and the outer margin  */
+    --pinImageSize: 32mm; /* The inner diameter of the pin, where the image is */
+    --pinSpacing: 3mm; /* The space between the pins */
+    --printBackgroundColor: none; 
 
 }
 
@@ -18,9 +24,18 @@ body {
     display: none !important;
 }
 
+.disabled {
+    pointer-events: none;
+    opacity: .5;
+}
+
+.noShow {
+    width: 0;
+    height: 0;
+}
+
 .shadowbox {
     background: #00000078;
-    /* background: green; */
 
     display: flex;
     align-items: center;
@@ -36,262 +51,4 @@ body {
     z-index: 1000;
 }
 
-@media only screen {
-    .showHowToButton {
-        background: #292929;
 
-        cursor: pointer;
-
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
-
-        width: 3rem;
-        height: 3rem;
-        outline: .1rem solid #09cdda;
-        border-radius: 100%;
-
-        transition: all .3s ease-in-out;
-    }
-
-    .showHowToButton:hover {
-        background: #4a4a4a;
-                
-        transition: all .3s ease-in-out;
-        transform: scale(1.1);
-    }
-
-    .howTo {
-        background: #292929;
-
-        display: flex;
-        flex-direction: column;
-
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-
-        max-width: 28rem;
-        padding: 1rem;
-        outline: .1rem solid #09cdda;
-        border-radius: .4rem;
-    }
-
-    .howTo h1 {
-        padding-left: 2.5rem;
-    }
-
-    .howTo ul li {
-        margin-bottom: .9rem;
-    }
-
-
-    #imageContainer {
-        display: none;
-    }
-
-
-    body {
-        background-color: #4a4a4a;
-        color: #fff;
-
-        height: 100vh;
-        padding: 0;
-        margin: 0;
-    }
-
-    #inputDiv {
-        background-color: #3d3c3c;
-        position: relative;
-
-        width: 25rem;
-        border: var(--border-width) solid #ddd;
-        margin-inline: auto;
-    }
-
-    #imageNotSquareWarning {
-        background-color: rgb(137, 10, 10);
-
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-
-        position: absolute;
-        top: 0;
-        right: 0;
-
-        padding: .5rem;
-
-        opacity: 1;
-        transition: opacity .1s ease-in-out; /* Adjust the duration and easing as needed */
-    }
-      
-    #imageNotSquareWarning.hidden {
-    opacity: 0;
-    pointer-events: none; /* Optionally disable pointer events when hidden */
-    } 
-
-    #imageNotSquareWarning p {
-        margin: 0;
-        margin-right: .4rem;
-    }
-
-        #previewImageContainer {
-            text-align: center;
-            height: 19rem;
-            width: calc(100%-2*var(--border-width));
-            padding: 1rem;
-
-        }
-        
-            #previewImage {
-                background: #4a4a4a;
-
-                cursor: pointer;
-
-                height: 17rem;
-                width: 17rem;
-                border-radius: 100%;
-            }
-        
-        #controlDiv {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-
-            height: 3rem;
-
-        }
-
-            .selectImageContainer {
-                flex: 5;
-
-                display: flex;
-                align-items: center;   
-
-                height: 100%;
-                padding: 20;
-                border: 0;
-                outline: var(--border-width) solid #ddd;
-                padding-right: 1rem;
-            }
-
-            body .selectImageContainer * {
-                cursor: pointer;
-            }
-
-                #selectImageButton {
-                    background: #585858;
-
-                    cursor: pointer;     
-
-                    height: 100%;
-                    margin-right: .7rem;
-
-                    transition: all .3s ease-in-out;
-                }
-
-                #selectImageButton:hover {
-                    background-color: #2f83bc;
-                    border-radius: 100%;
-
-                    transition: all .3s ease-in-out;
-                    transform: rotate(360deg); 
-                }
-
-                .fileName {
-                    cursor: default; 
-                }
-    
-            #generateTemplateButton {
-                flex: 2;
-
-                background-color: #3498db;
-                color: #fff;
-                cursor: pointer;
-
-                height: 100%;
-                /* min-width: 7rem; */
-                padding: 10px;
-                border: 0;
-                outline: var(--border-width) solid #ddd;
-
-                transition: all .1s ease-in-out;
-            }
-
-            #generateTemplateButton:active {
-                background-color: rgb(61, 50, 222);
-                transition: all .1s ease-in-out;
-            }
-
-    
-
-    footer {
-        /* background-color: purple; */
-        font-size: 1rem;
-        text-align: center;
-        font-family: copperplate, sans-serif;
-
-        position: absolute;
-        bottom: 0;
-
-        width: 100vw;
-        height: 3rem;
-
-    }
-
-    footer img {
-        height: 1rem;
-        width: auto;
-        vertical-align: middle;
-    }
-
-    footer a {
-        color: aqua;
-        text-decoration: none;
-    }
-}
-
-
-/* STYLE FOR THE PIN GRID */
-
-@media print {
-    body {
-        background-color: var(--background-color-print); /* Use the CSS variable for printing */
-    }
-
-    #inputDiv, footer, .howToShadowbox, .showHowToButton {
-        display: none;
-    }
-
-    .image-container {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: left;
-        margin-top: 20px;
-
-    }
-    
-    .imgRow {
-        width: min-content;
-        height: min-content;
-        display: block;
-    }
-    
-    .pinImage {
-        /* border: .5mm solid #ca1616; */
-        border: .5mm solid #000;
-
-        width: var(--pinImage-size);
-        height: var(--pinImage-size);
-        padding: 5.5mm;
-        border-radius: 50%;
-        margin: 1.5mm;
-    }
-}

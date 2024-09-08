@@ -1,35 +1,62 @@
 
-var generateTemplateButton = document.getElementById("generateTemplateButton")
-var selectImageInput = document.getElementById('selectImageInput');
-var imageContainer = document.getElementById('imageContainer');
-var previewImage = document.getElementById('previewImage');
-var imageNotSquareWarningDialog = document.getElementById('imageNotSquareWarning');
-var selectImageButton = document.getElementById('selectImageButton');
-var fileName = document.getElementById('fileName');
-var uglyDuckling = document.getElementById('uglyDuckling');
+const generateTemplateButton = document.getElementById("generateTemplateButton")
+const selectImageInput = document.getElementById('selectImageInput');
+const imageContainer = document.getElementById('imageContainer');
+const previewImage = document.getElementById('previewImage');
+const imageNotSquareWarningDialog = document.getElementById('imageNotSquareWarning');
+const selectImageButton = document.getElementById('selectImageButton');
+const fileName = document.getElementById('fileName');
+const createPaddingCheckbox = document.getElementById('createPaddingCheckbox');
+const IncludePinBackgroundCheckbox = document.getElementById('pinBackground');
+const pinColorPickerOption = document.getElementById('pinColorPickerOption');
+
+
+const pinColorText = document.getElementById('pinColorText');
+const pinColor = document.getElementById('pinColor');
 
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
+if (localStorage.getItem("includePinPadding")) {
+    createPaddingCheckbox.checked = localStorage.getItem("includePinPadding")
+}
+createPaddingCheckbox.addEventListener('change', () => {
+    localStorage.setItem("includePinPadding", createPaddingCheckbox.checked);
+});
+
+if (localStorage.getItem("pinBackground")) {
+    setPrintBackgroundColor(localStorage.getItem("pinBackground"));
+}
+
+
+if (localStorage.getItem("includePinBackground") && localStorage.getItem("includePinBackground") === "true") {
+    IncludePinBackgroundCheckbox.checked = (localStorage.getItem("includePinBackground"));
+    pinColorPickerOption.classList.remove('disabled');
+}
 
 
 function createImageGrid() {
-    imageContainer.innerHTML = ""; // Clear the image container
+    imageContainer.innerHTML = "";
 
-
-    // Ensure an image is selected
-    if (imageIsUploaded()) {
-        var imageUrl = URL.createObjectURL(selectImageInput.files[0]);
+    if (isImageUploaded()) {
+        const imageUrl = URL.createObjectURL(selectImageInput.files[0]);
 
         // Create the grid of images
-        for (var row = 0; row < 6; row++) {
-            var imgRow = document.createElement("div");
+        for (let row = 0; row < 6; row++) {
+            const imgRow = document.createElement("div");
             imgRow.classList.add("imageRow");
 
-            for (var col = 0; col < 4; col++) {
-                var imgElement = document.createElement('img');
+            for (let col = 0; col < 4; col++) {
+                const imgElement = document.createElement('img');
                 imgElement.src = imageUrl;
                 imgElement.alt = 'Duplicated Image';
-                imgElement.classList.add('pinImage');
+                imgElement.classList = ['pinImage'];
+
+                if (createPaddingCheckbox.checked) {
+                    imgElement.classList.add('pinImageWithPadding');
+                }
+                if (IncludePinBackgroundCheckbox.checked) {
+                    imgElement.classList.add('pinImageWithBackground');
+                }
                 imgRow.appendChild(imgElement);
             }
             imageContainer.appendChild(imgRow);
@@ -41,43 +68,38 @@ function createImageGrid() {
 function uploadedImageChanged() {
     changeFileName();
     setImagePreview();
-    setImageBackground(); // Call the function to set the background color
 
     setTimeout(warnImageIsNotSquare, 100);
 };
 
 function changeFileName() {
-    var fileName = selectImageInput.files[0].name;
+    const fileName = selectImageInput.files[0].name;
     document.getElementById('fileName').innerHTML = fileName;
 };
 
 function warnImageIsNotSquare() {
     if (imageIsSquare()) {
-        console.log("image is square");
         disableWarning();
     } else{
-        console.log("image is not square");
         showWarning("Image is not square");
     }
 };
 
 function showWarning(message){
     imageNotSquareWarningDialog.querySelector('p').innerHTML = message;
-    imageNotSquareWarningDialog.classList.remove('hidden');
+    imageNotSquareWarningDialog.style.top = "0";
 
 }
 
 function disableWarning() {
-    imageNotSquareWarningDialog.classList.add('hidden');
+    imageNotSquareWarningDialog.style.top = "-3rem";
 }
 
 
 function imageIsSquare() {
-    var image = previewImage;
-    console.log(image.naturalWidth + " " + image.naturalHeight);
+    const image = previewImage;
 
     if (image.naturalWidth === image.naturalHeight) {
-        console.log("true");
         return true;
     }
     return false;
@@ -85,46 +107,24 @@ function imageIsSquare() {
 
 function setImagePreview() {
     if (selectImageInput.files.length > 0) {
-        var imageUrl = URL.createObjectURL(selectImageInput.files[0]);
+        const imageUrl = URL.createObjectURL(selectImageInput.files[0]);
         previewImage.src = imageUrl
 
         createImageGrid(); // has to be here. if placed before print, the grid will not load in time for print
     }
 }
 
-function setImageBackground() {
-    // Ensure an image is uploaded
-    if (imageIsUploaded()) {
-        var imageUrl = URL.createObjectURL(selectImageInput.files[0]);
-        var img = new Image();
-        img.onload = function() {
-            var canvas = document.createElement('canvas');
-            canvas.width = img.width;
-            canvas.height = img.height;
-            var ctx = canvas.getContext('2d');
-            ctx.drawImage(img, 0, 0);
-            var pixelData = ctx.getImageData(canvas.width - 1, 0, 1, 1).data;
-            var color = `rgb(${pixelData[0]}, ${pixelData[1]}, ${pixelData[2]})`;
-            
-            document.body.style.setProperty('--background-color-print', color);
-        };
-        img.src = imageUrl;
-    }
+function setPrintBackgroundColor(color) {
+    document.body.style.setProperty('--printBackgroundColor', color);
+    localStorage.setItem("pinBackground", color);
+    pinColorText.innerHTML = color;
 }
 
-
-
-
-function imageIsUploaded(){
+function isImageUploaded(){
     if (selectImageInput.files.length > 0) {
         return true;
     } 
-    console.log("FILE NOT UPLOADED");
     return false;
-}
-
-function checkIfSquare(width, height) {
-    return width === height;
 }
 
 selectImageButton.addEventListener("click", function () {
@@ -139,10 +139,47 @@ selectImageInput.addEventListener("change", uploadedImageChanged);
 
 
 generateTemplateButton.addEventListener("click", function(){
-    if (imageIsUploaded()){
+    if (isImageUploaded()){
         window.print();
     } else {
         alert("Please upload an image first.");}
 });
 
 
+
+
+
+IncludePinBackgroundCheckbox.addEventListener('change', function(){
+    setIncludePinBackground(IncludePinBackgroundCheckbox.checked);
+});
+
+function setIncludePinBackground(input){
+    if (input){
+        pinColorPickerOption.classList.remove('disabled');
+        previewImage.classList.add('pinImageWithBackground');
+        
+        localStorage.setItem("includePinBackground", true);
+    } else {
+        pinColorPickerOption.classList.add('disabled');
+        previewImage.classList.remove('pinImageWithBackground');
+        localStorage.setItem("includePinBackground", false);
+    }
+}
+
+pinColorText.addEventListener('click', () =>{
+    pinColor.click();
+});
+
+pinColor.addEventListener('input', () =>{
+    setPrintBackgroundColor(pinColor.value);
+});
+
+
+
+createPaddingCheckbox.addEventListener('change', function(){
+    if (createPaddingCheckbox.checked){
+        document.body.classList.add('padding');
+    } else {
+        document.body.classList.remove('padding');
+    }
+});

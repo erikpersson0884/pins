@@ -1,6 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <title>pins</title>
+    <link rel="icon" href="images/pride-flag-by-goken.png" type="image/x-icon">
+
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="A simple page to generate a pin template for EqualITs pinmaker">
@@ -10,16 +14,16 @@
     <meta name="theme-color" content="#000000">
 
     
-    <title>pins</title>
-    <link rel="icon" href="images/pride-flag-by-goken.png" type="image/x-icon">
+
     
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/screen.css">
+    <link rel="stylesheet" href="css/print.css">
 
     <script src="js/script.js" defer></script>
     <script src="js/howto.js" defer></script>
 
     <link rel="manifest" href="pwa/manifest.json">
-
 </head>
 <body>    
     <div id="showHowToButton" class="showHowToButton">
@@ -37,32 +41,51 @@
         </aside>
     </div>
 
-    <div id="inputDiv">
-        <div id="imageNotSquareWarning" class="hidden">
-            <img id="logo" src="images/icons/warning.svg" alt="EqualIT logo" height="30">
-            <p>Image is not square</p>
-        </div>
-
-        <div id="previewImageContainer">
-            <img id="previewImage" src="images/icons/image.svg" alt="Image preview of pin image">
-        </div>
-
-        <div id="controlDiv">
-            <div class="selectImageContainer">
-                <input id="selectImageInput" type="file" accept="image/*" class="hidden" />
-
-                <img id="selectImageButton" src="images/icons/upload-white.svg" height="4" alt="upload image">
-                <span id="fileName" class="fileName">No file chosen</span>
+    <div class="mainContent">
+        <div id="previewImageContainer" class="previewImageContainer">
+            <div id="imageNotSquareWarning" class="imageNotSquareWarning">
+                <img id="logo" src="images/icons/warning.svg" alt="EqualIT logo" height="30">
+                <p>Image is not square</p>
             </div>
+
+            <img id="previewImage" class="previewImage" src="images/icons/image.svg" alt="Image preview of pin image">
+
+            <div class="selectImageText">
+                <img id="selectImageButton" src="images/icons/upload-white.svg" height="4" alt="Upload image">
+                <label for="selectImageInput" id="fileName" class="fileName">Select Image</label>
+            </div>
+            
+            <input id="selectImageInput" type="file" accept="image/*" class="hidden" />
+        </div>
+
+        <div id="optionsDiv">
+            <h2>Options</h2>
+
+            <div class="option">
+                <label for="createPaddingCheckbox">Create Padding</label>
+                <input id="createPaddingCheckbox" type="checkbox" />
+            </div>
+            
+            <div id="pinIncludeBackground" class="option">
+                <label for="pinBackground">Include background: </label>
+                <input id="pinBackground" type="checkbox">
+            </div>
+
+            <div id="pinColorPickerOption" class="pinColorPickerOption option disabled">
+                <label for="pinColor">Background color: </label>
+                <p id="pinColorText" class="pinColorText">#000000</p>
+
+            </div>
+            <input id="pinColor" class="pinColor noShow" type="color" value="#000000"/>
+
 
             <button id="generateTemplateButton" class="noPrint">Generate Template</button>
         </div>
     </div>
 
-    <footer class="">            
+    <footer class="pageFooter">            
         Made as a gift from 
         <a href="https://github.com/erikpersson0884 ">
-            <!-- <img src="images/goken-pa-market.png" alt="Gökens mark" height="10"> -->
             Göken
         </a> 
         to 
