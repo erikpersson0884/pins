@@ -3,7 +3,7 @@
     const imageNotSquareWarningDialog = document.getElementById('imageNotSquareWarning');
     const previewImage = document.getElementById('previewImage');
     const selectImageButton = document.getElementById('selectImageButton');
-    const fileName = document.getElementById('fileName');
+    const fileNameText = document.getElementById('fileNameText');
     const selectImageInput = document.getElementById('selectImageInput');
 
     /// Options Side
@@ -20,12 +20,12 @@ const imageContainer = document.getElementById('imageContainer');
 
 // Set default values
 
-if (localStorage.getItem("includePinPadding")) {
-    createPaddingCheckbox.checked = localStorage.getItem("includePinPadding")
+if (localStorage.getItem("includePinPadding") && localStorage.getItem("includePinPadding") === "true") {
+    createPaddingCheckbox.checked = true;
 }
 
 if (localStorage.getItem("includePinBackground") && localStorage.getItem("includePinBackground") === "true") {
-    IncludePinBackgroundCheckbox.checked = (localStorage.getItem("includePinBackground"));
+    IncludePinBackgroundCheckbox.checked = true;
     setIncludePinBackground(true);
 }
 
@@ -86,7 +86,7 @@ function disableWarning() {
 function createImageGrid() {
     imageContainer.innerHTML = "";
 
-    if (isImageUploaded()) throw new Error("No image uploaded");
+    if (!isImageUploaded()) throw new Error("No image uploaded");
 
     const imageUrl = URL.createObjectURL(selectImageInput.files[0]);
     for (let row = 0; row < 6; row++) {
@@ -118,7 +118,7 @@ function uploadedImageChanged() {
 
 
 function isImageUploaded(){
-    if (selectImageInput.files.length > 0)return true;
+    if (selectImageInput.files.length > 0) return true;
     return false;
 }
 
@@ -131,8 +131,8 @@ function warnImageIsNotSquare() {
 };
 
 function changeFileName() {
-    const fileName = selectImageInput.files[0].name;
-    fileName.innerHTML = fileName;
+    const newFileName = selectImageInput.files[0].name;
+    fileNameText.innerHTML = newFileName;
 };
 
 

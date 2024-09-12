@@ -172,6 +172,7 @@
 
         .pinColorText {
             background: var(--printBackgroundColor);
+            
             cursor: pointer;
 
             padding: .4rem;
