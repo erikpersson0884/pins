@@ -55,6 +55,8 @@ createPaddingCheckbox.addEventListener('change', () => {
 
 IncludePinBackgroundCheckbox.addEventListener('change', function(){
     setIncludePinBackground(IncludePinBackgroundCheckbox.checked);
+
+    
 });
 
 pinColorText.addEventListener('click', () =>{
