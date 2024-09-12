@@ -49,6 +49,7 @@ selectImageInput.addEventListener("change", uploadedImageChanged);
 
 
 createPaddingCheckbox.addEventListener('change', () => {
+    createImageGrid();
     localStorage.setItem("includePinPadding", createPaddingCheckbox.checked);
 });
 
