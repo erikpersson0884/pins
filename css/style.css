@@ -5,7 +5,7 @@
 
 :root {
     --pinSize: 46mm; /* There entire diameter of the pin. Including the image and the outer margin  */
-    --pinImageSize: 32mm; /* The inner diameter of the pin, where the image is */
+    --pinImageSize: 40mm; /* The inner diameter of the pin, where the image is */
     --pinSpacing: 3mm; /* The space between the pins */
     --printBackgroundColor: none; 
 

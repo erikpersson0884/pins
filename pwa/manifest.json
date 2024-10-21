@@ -6,8 +6,8 @@
     "theme_color": "#2196f3",
     "background_color": "#2196f3",
     "display": "standalone",
-    "scope": "/pins",
-    "start_url": "/pins",
+    "scope": "/pins/",
+    "start_url": "/pins/",
     "icons": [
         {
           "src": "windows11/SmallTile.scale-100.png",
