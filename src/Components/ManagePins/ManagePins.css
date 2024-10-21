@@ -1,0 +1,40 @@
+
+
+.managePins {
+    /* background-color: #464646; */
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+
+    min-width: 70%;
+    min-height: 10rem;
+    padding: .5rem 0;
+}
+
+.managePins>hr {
+    border: .08rem solid rgb(123, 123, 123);
+    width: 80%;
+}
+
+.managePins .actionButtons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right; 
+    gap: 2rem;
+
+    width: 100%;
+}
+
+.managePins .printButton {
+    background-color: #fff;
+    color: #000;
+}
+
+.managePins .printButton:hover {
+    background-color: darkgreen;
+    color: #fff;
+}

@@ -1,0 +1,18 @@
+
+
+.pageFooter {
+    font-family: 'Kode Mono';
+    font-size: 1rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: .7rem;
+
+    width: 100%;
+    padding: 1rem;
+    margin-top: auto;
+
+    /* white-space: pre; */
+}

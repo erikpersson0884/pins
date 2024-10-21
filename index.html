@@ -1,99 +1,16 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <title>pins</title>
-    <link rel="icon" href="images/pride-flag-by-goken.png" type="image/x-icon">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="manifest" href="pwa/manifest.json" />
 
-    <base href="https://erikpersson0884.github.io/pins/">
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A simple page to generate a pin template for EqualITs pinmaker">
-    <meta name="keywords" content="pin, template, generator, equalit, goken">
-    <meta name="author" content="Erik Persson">
-    <meta name="language" content="English">
-    <meta name="theme-color" content="#000000">
-
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/screen.css">
-    <link rel="stylesheet" href="css/print.css">
-
-    <script src="js/script.js" defer></script>
-    <script src="js/howto.js" defer></script>
-
-    <link rel="manifest" href="pwa/manifest.json">
-</head>
-<body>    
-    <div id="showHowToButton" class="showHowToButton">
-        <img src="images/icons/question-mark.svg" alt="question mark" height="20">
-    </div>
-
-    <div id="howToShadowbox" class="shadowbox howToShadowbox hidden">
-        <aside id="howTo" class="howTo">
-            <h1>HowTo pins</h1>
-            <ul>
-                <li>Upload square images</li>
-                <li>Disable page headers and footers so that the pins all fit on the same page</li>
-                <li>If you enable backgroound graphics, the page background will match the top left corner of the image</li>
-            </ul>
-        </aside>
-    </div>
-
-    <div class="mainContent">
-        <div id="previewImageContainer" class="previewImageContainer">
-            <div id="imageNotSquareWarning" class="imageNotSquareWarning">
-                <img id="logo" src="images/icons/warning.svg" alt="EqualIT logo" height="30">
-                <p>Image is not square</p>
-            </div>
-
-            <img id="previewImage" class="previewImage" src="images/icons/image.svg" alt="Image preview of pin image">
-
-            <div class="selectImageText">
-                <img id="selectImageButton" src="images/icons/upload-white.svg" height="4" alt="Upload image">
-                <label for="selectImageInput" id="fileNameText" class="fileName">Select Image</label>
-            </div>
-            
-            <input id="selectImageInput" type="file" accept="image/*" class="hidden" />
-        </div>
-
-        <div id="optionsDiv">
-            <h2>Options</h2>
-
-            <div class="option">
-                <label for="createPaddingCheckbox">Create Padding</label>
-                <input id="createPaddingCheckbox" type="checkbox" />
-            </div>
-            
-            <div id="pinIncludeBackground" class="option">
-                <label for="pinBackground">Include background: </label>
-                <input id="pinBackground" type="checkbox">
-            </div>
-
-            <div id="pinColorPickerOption" class="pinColorPickerOption option disabled">
-                <label for="pinColorInput">Background color: </label>
-                <p id="pinColorText" class="pinColorText">#000000</p>
-            </div>
-            
-            <input id="pinColorInput" class="pinColorInput noShow" type="color" value="#000000"/>
-
-
-            <button id="generateTemplateButton" class="noPrint">Generate Template</button>
-        </div>
-    </div>
-
-    <footer class="pageFooter">            
-        Made as a gift from 
-        <a href="https://github.com/erikpersson0884 ">
-            Göken
-        </a> 
-        to 
-        <a href="https://chalmers.it/committees/equalit">
-            EqualIT
-            <img src="images/pride-flag-by-goken.png" alt="pride flag by göken" height="10">
-        </a>
-    </footer>
-
-
-    <div class="image-container" id="imageContainer"></div>
-</body>
+    <title>Pins</title>
+    <link rel="icon" href="/favicon.ico" />
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
 </html>
